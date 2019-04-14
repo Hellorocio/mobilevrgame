@@ -1,0 +1,240 @@
+fileFormatVersion: 2
+guid: 9b67bbae5fb82461db8703a55c94643e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Group_001
+    100002: Group_002
+    100004: Group_004
+    100006: Group_007
+    100008: Group_010
+    100010: Group_011
+    100012: Group_012
+    100014: Group_013
+    100016: Group_014
+    100018: m_001
+    100020: m_002
+    100022: m_003
+    100024: m_004
+    100026: m_005
+    100028: m_006
+    100030: m_007
+    100032: m_008
+    100034: m_009
+    100036: m_010
+    100038: m_011
+    100040: m_012
+    100042: //RootNode
+    100044: rygg_001
+    100046: rygg_004
+    100048: sitsdel bak_001
+    100050: sitsdel#1_001
+    100052: sitsdel_001
+    100054: sitsdel_002
+    400000: Group_001
+    400002: Group_002
+    400004: Group_004
+    400006: Group_007
+    400008: Group_010
+    400010: Group_011
+    400012: Group_012
+    400014: Group_013
+    400016: Group_014
+    400018: m_001
+    400020: m_002
+    400022: m_003
+    400024: m_004
+    400026: m_005
+    400028: m_006
+    400030: m_007
+    400032: m_008
+    400034: m_009
+    400036: m_010
+    400038: m_011
+    400040: m_012
+    400042: //RootNode
+    400044: rygg_001
+    400046: rygg_004
+    400048: sitsdel bak_001
+    400050: sitsdel#1_001
+    400052: sitsdel_001
+    400054: sitsdel_002
+    2100000: dbl_m_001
+    2100002: dbl_m_002
+    2100004: dbl_m_003
+    2100006: dbl_m_004
+    2100008: dbl_m_005
+    2100010: dbl_Group_001
+    2100012: No Name
+    2100014: dbl_rygg_001
+    2100016: dbl_rygg_002
+    2100018: dbl_Group_002
+    2100020: dbl_Group_003
+    2100022: dbl_Group_004
+    2300000: Group_001
+    2300002: Group_002
+    2300004: Group_004
+    2300006: Group_007
+    2300008: Group_010
+    2300010: Group_011
+    2300012: Group_012
+    2300014: Group_013
+    2300016: Group_014
+    2300018: m_001
+    2300020: m_002
+    2300022: m_003
+    2300024: m_004
+    2300026: m_005
+    2300028: m_006
+    2300030: m_007
+    2300032: m_008
+    2300034: m_009
+    2300036: m_010
+    2300038: m_011
+    2300040: m_012
+    2300042: rygg_001
+    2300044: rygg_004
+    2300046: sitsdel bak_001
+    2300048: sitsdel#1_001
+    2300050: sitsdel_001
+    2300052: sitsdel_002
+    3300000: Group_001
+    3300002: Group_002
+    3300004: Group_004
+    3300006: Group_007
+    3300008: Group_010
+    3300010: Group_011
+    3300012: Group_012
+    3300014: Group_013
+    3300016: Group_014
+    3300018: m_001
+    3300020: m_002
+    3300022: m_003
+    3300024: m_004
+    3300026: m_005
+    3300028: m_006
+    3300030: m_007
+    3300032: m_008
+    3300034: m_009
+    3300036: m_010
+    3300038: m_011
+    3300040: m_012
+    3300042: rygg_001
+    3300044: rygg_004
+    3300046: sitsdel bak_001
+    3300048: sitsdel#1_001
+    3300050: sitsdel_001
+    3300052: sitsdel_002
+    4300000: m_012
+    4300002: m_011
+    4300004: m_010
+    4300006: m_009
+    4300008: m_008
+    4300010: m_007
+    4300012: m_006
+    4300014: m_005
+    4300016: m_004
+    4300018: m_003
+    4300020: m_002
+    4300022: m_001
+    4300024: Group_014
+    4300026: Group_013
+    4300028: Group_012
+    4300030: Group_011
+    4300032: Group_010
+    4300034: sitsdel#1_001
+    4300036: sitsdel_002
+    4300038: sitsdel_001
+    4300040: sitsdel bak_001
+    4300042: rygg_004
+    4300044: rygg_001
+    4300046: Group_007
+    4300048: Group_004
+    4300050: Group_002
+    4300052: Group_001
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
