@@ -26,11 +26,12 @@ public class ClothingGrabber : MonoBehaviour
         if (collidedObj.tag == "Clothing")
         {
             collidedObj.tag = "Untagged";
-            EquipClothing(collidedObj);
+            
+            EquipClothing(collidedObj.transform);
         }
     }
 
-    private void EquipClothing (GameObject clothing)
+    private void EquipClothing (Transform clothing)
     {
         ClothingObject clothingScript = clothing.GetComponent<ClothingObject>();
         DraggableScript draggableScript = clothing.GetComponent<DraggableScript>();
@@ -38,13 +39,14 @@ public class ClothingGrabber : MonoBehaviour
         {
             draggableScript.Release();
 
-            //clothing.transform.SetParent(clothingSlots[(int)clothingScript.category].transform.parent, false);
-            //clothing.transform.parent = clothingSlots[(int)clothingScript.category].transform.parent;
-            clothing.transform.position = clothingSlots[(int)clothingScript.category].transform.parent.position;
 
-            clothingSlots[(int)clothingScript.category].SetActive(false);
+            GameObject oldClothing = clothingSlots[(int)clothingScript.category];
+            clothingSlots[(int)clothingScript.category] = clothing.gameObject;
+            
 
-            clothingSlots[(int)clothingScript.category] = clothing;
+            clothingScript.TransformEquippedClothing(oldClothing.transform.parent);
+
+            oldClothing.SetActive(false);            
         }
     }
 }

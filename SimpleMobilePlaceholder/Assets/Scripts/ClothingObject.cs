@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ClothingObject : MonoBehaviour
 {
+    
     [System.Flags]
     public enum ClothingTag
     {
@@ -35,6 +36,9 @@ public class ClothingObject : MonoBehaviour
     [EnumFlag(2)]
     public ClothingTag clothingTags;
 
+    public bool test;
+    public bool equipped;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +48,25 @@ public class ClothingObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (test)
+        {
+            print("shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent);
+        }
+
+        if (equipped && transform.localPosition != Vector3.zero)
+        {
+            transform.localPosition = Vector3.zero;
+        }
+    }
+
+    public void TransformEquippedClothing (Transform parent)
+    {
+        transform.parent = parent;
+        transform.rotation = parent.rotation;
+        transform.localScale = Vector3.one;
+        transform.localPosition = Vector3.zero;
+        //print("old shirt: pos = " + parent.position);
+        //print("new shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent);
+        equipped = true;
     }
 }
