@@ -7,27 +7,71 @@ public class ClothingGrabber : MonoBehaviour
 {
     public GameObject[] clothingSlots; //correspond with category
 
+    GameObject[] defaultSlots;
+
+    GameObject currentClothing;
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        defaultSlots = new GameObject[clothingSlots.Length];
+        for (int i = 0; i < clothingSlots.Length; i++)
+        {
+            if (clothingSlots != null)
+            {
+                defaultSlots[i] = clothingSlots[i];
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    //sets clothing to default (called by button)
+    public void ResetClothing ()
+    {
+        for (int i = 0; i < clothingSlots.Length; i++)
+        {
+            if (defaultSlots[i] != null && defaultSlots[i] != clothingSlots[i])
+            {
+                ClothingObject clothingScript = clothingSlots[i].GetComponent<ClothingObject>();
+                clothingScript.ResetTransform();
+                clothingSlots[i] = defaultSlots[i];
+                clothingSlots[i].SetActive(true);
+            }
+            
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         GameObject collidedObj = other.gameObject;
-
-        if (collidedObj.tag == "Clothing")
+        ClothingObject clothingScript = collidedObj.GetComponent<ClothingObject>();
+        if (collidedObj.tag == "Clothing" && clothingScript != null && !clothingScript.equipped && collidedObj != currentClothing)
         {
-            collidedObj.tag = "Untagged";
+            currentClothing = collidedObj;
+            //collidedObj.tag = "Untagged";
             
-            EquipClothing(collidedObj.transform);
+            //EquipClothing(collidedObj.transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == currentClothing)
+        {
+            currentClothing = null;
+        }
+    }
+
+    public void CheckEquipClothing (Transform clothing)
+    {
+        if (currentClothing != null && clothing == currentClothing.transform)
+        {
+            EquipClothing(clothing);
         }
     }
 
@@ -46,7 +90,8 @@ public class ClothingGrabber : MonoBehaviour
 
             clothingScript.TransformEquippedClothing(oldClothing.transform.parent);
 
-            oldClothing.SetActive(false);            
+            oldClothing.SetActive(false);
+            currentClothing = null;
         }
     }
 }

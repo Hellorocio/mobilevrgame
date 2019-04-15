@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClothingObject : MonoBehaviour
 {
@@ -38,23 +39,37 @@ public class ClothingObject : MonoBehaviour
 
     public bool test;
     public bool equipped;
+    private Transform itemSlotParent;
+
+    public Text debugText;
+
+    Quaternion defaultRotation;
+    Vector3 defaultPosition;
+    Vector3 defaultScale;
+    
+ 
 
     // Start is called before the first frame update
     void Start()
     {
+        defaultPosition = transform.position;
+        defaultRotation = transform.rotation;
+        defaultScale = transform.localScale;
         //print("Tag:" + type + " (" + (int)type + ")");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (test)
+        if (debugText != null)
         {
-            print("shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent);
+            debugText.text = "shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent;
+            //print("shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent);
         }
 
-        if (equipped && transform.localPosition != Vector3.zero)
+        if (equipped && (transform.localPosition != Vector3.zero || transform.parent != itemSlotParent))
         {
+            transform.parent = itemSlotParent;
             transform.localPosition = Vector3.zero;
         }
     }
@@ -65,8 +80,19 @@ public class ClothingObject : MonoBehaviour
         transform.rotation = parent.rotation;
         transform.localScale = Vector3.one;
         transform.localPosition = Vector3.zero;
+
+        itemSlotParent = parent;
         //print("old shirt: pos = " + parent.position);
         //print("new shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent);
         equipped = true;
+    }
+
+    public void ResetTransform ()
+    {
+        equipped = false;
+        transform.parent = null;
+        transform.position = defaultPosition;
+        transform.rotation = defaultRotation;
+        transform.localScale = defaultScale;
     }
 }
