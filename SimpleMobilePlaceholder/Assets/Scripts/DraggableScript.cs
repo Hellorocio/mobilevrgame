@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(EventTrigger))]
-public class CubeBehavior : MonoBehaviour
+public class DraggableScript : MonoBehaviour
 {
 
     // Use this for initialization
