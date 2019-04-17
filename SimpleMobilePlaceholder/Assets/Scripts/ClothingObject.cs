@@ -20,7 +20,8 @@ public class ClothingObject : MonoBehaviour
         Sporty = 1 << 7,
         Bad = 1 << 8,
         Stylish = 1 << 9,
-        Yeehaw = 1 << 10
+        Yeehaw = 1 << 10,
+        BusCas = 1 << 11,
     }
     
     public enum ClothingCategory
@@ -94,5 +95,10 @@ public class ClothingObject : MonoBehaviour
         transform.position = defaultPosition;
         transform.rotation = defaultRotation;
         transform.localScale = defaultScale;
+    }
+
+    public void GetClothingValue ()
+    {
+
     }
 }
