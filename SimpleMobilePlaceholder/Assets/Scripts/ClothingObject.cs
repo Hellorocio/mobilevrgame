@@ -38,6 +38,7 @@ public class ClothingObject : MonoBehaviour
     [EnumFlag(2)]
     public ClothingTag clothingTags;
 
+    public bool removable; //used for hats to allow you to click to take them off
     public bool test;
     public bool equipped;
     private Transform itemSlotParent;
@@ -95,6 +96,12 @@ public class ClothingObject : MonoBehaviour
         transform.position = defaultPosition;
         transform.rotation = defaultRotation;
         transform.localScale = defaultScale;
+    }
+
+    public void UnequipThis()
+    {
+        equipped = false;
+        
     }
 
     public void GetClothingValue ()

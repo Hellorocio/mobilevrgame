@@ -6,6 +6,7 @@ using UnityEngine;
 public class ClothingGrabber : MonoBehaviour
 {
     public GameObject[] clothingSlots; //correspond with category
+                                       //leave 0 empty, 1 = top, 2 = bottom, 3 = hat, 4 = shoes, 5 = topbottom
 
     GameObject[] defaultSlots;
 
@@ -30,19 +31,14 @@ public class ClothingGrabber : MonoBehaviour
     {
     }
 
-    //sets clothing to default (called by button)
-    public void ResetClothing ()
+    /// <summary>
+    /// sets all clothing to default (called by reset button)
+    /// </summary>
+    public void ResetAllClothing ()
     {
-        for (int i = 0; i < clothingSlots.Length; i++)
+        for (int i = 1; i < clothingSlots.Length; i++)
         {
-            if (defaultSlots[i] != null && defaultSlots[i] != clothingSlots[i])
-            {
-                ClothingObject clothingScript = clothingSlots[i].GetComponent<ClothingObject>();
-                clothingScript.ResetTransform();
-                clothingSlots[i] = defaultSlots[i];
-                clothingSlots[i].SetActive(true);
-            }
-            
+            ResetClothingItem((ClothingObject.ClothingCategory)i);
         }
     }
 
@@ -67,6 +63,10 @@ public class ClothingGrabber : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the player drops a clothing item to check if it is near the bear (to equip it)
+    /// </summary>
+    /// <param name="clothing"></param>
     public void CheckEquipClothing (Transform clothing)
     {
         if (currentClothing != null && clothing == currentClothing.transform)
@@ -75,6 +75,10 @@ public class ClothingGrabber : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Equips clothing when the player drops a clothing item on the bear
+    /// </summary>
+    /// <param name="clothing"></param>
     private void EquipClothing (Transform clothing)
     {
         ClothingObject clothingScript = clothing.GetComponent<ClothingObject>();
@@ -92,6 +96,45 @@ public class ClothingGrabber : MonoBehaviour
 
             oldClothing.SetActive(false);
             currentClothing = null;
+        }
+    }
+
+    /// <summary>
+    /// Called when the player clicks on a clothing item already on the bear, unequips the clothing
+    /// </summary>
+    /// <param name="clothingScript"></param>
+    public void UnequipClothing (ClothingObject clothingScript)
+    {
+        if (clothingScript.removable && clothingScript.equipped)
+        {
+            ResetClothingItem(clothingScript.category, false);
+        }
+    }
+
+    /// <summary>
+    /// Resets the default clothing item on the bear
+    /// </summary>
+    /// <param name="slot"></param>
+    /// <param name="resetPos"> When true, resets positon of clothing. We don't want this when the player is dragging clothing off the bear</param>
+    public void ResetClothingItem (ClothingObject.ClothingCategory slot, bool resetPos = true)
+    {
+        int clothingSlot = (int)slot;
+        if (defaultSlots[clothingSlot] != null && defaultSlots[clothingSlot] != clothingSlots[clothingSlot])
+        {
+            ClothingObject clothingScript = clothingSlots[clothingSlot].GetComponent<ClothingObject>();
+
+            if (resetPos)
+            {
+                clothingScript.ResetTransform();
+            }
+            else
+            {
+                clothingScript.UnequipThis();
+            }
+            
+
+            clothingSlots[clothingSlot] = defaultSlots[clothingSlot];
+            clothingSlots[clothingSlot].SetActive(true);
         }
     }
 }
