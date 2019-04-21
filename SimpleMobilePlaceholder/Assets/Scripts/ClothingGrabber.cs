@@ -11,6 +11,7 @@ public class ClothingGrabber : MonoBehaviour
     GameObject[] defaultSlots;
 
     GameObject currentClothing;
+    public GameObject debug;
     
 
     // Start is called before the first frame update
@@ -94,7 +95,17 @@ public class ClothingGrabber : MonoBehaviour
 
             clothingScript.TransformEquippedClothing(oldClothing.transform.parent);
 
-            oldClothing.SetActive(false);
+            //deactivate clothing if default, reset it otherwise
+            if (oldClothing == defaultSlots[(int)clothingScript.category])
+            {
+                oldClothing.SetActive(false);
+            }
+            else
+            {
+                ClothingObject oldClothingScript = oldClothing.GetComponent<ClothingObject>();
+                oldClothingScript.ResetTransform();
+            }
+            
             currentClothing = null;
         }
     }
