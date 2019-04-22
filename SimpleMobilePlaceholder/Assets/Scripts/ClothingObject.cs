@@ -43,6 +43,14 @@ public class ClothingObject : MonoBehaviour
         Black = 6
     }
 
+    public enum MatchingCategory
+    {
+        bad = -5,
+        questionable = 0,
+        okay = 5,
+        great = 10
+    }
+
     public ClothingCategory category;
     public ClothingColor color;
 
@@ -81,7 +89,7 @@ public class ClothingObject : MonoBehaviour
     {
         if (debugText != null)
         {
-            debugText.text = "shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent;
+            //debugText.text = "shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent;
             //print("shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent);
         }
 
@@ -133,8 +141,30 @@ public class ClothingObject : MonoBehaviour
         return false;
     }
 
-    public void GetClothingValue ()
+    public MatchingCategory GetClothingMatch (StyleManager.Style compareStyle)
     {
-
+        MatchingCategory match = MatchingCategory.bad;
+        switch (compareStyle)
+        {
+            case StyleManager.Style.Casual:
+                {
+                    if ((clothingTags & ClothingTag.Casual) != 0)
+                    {
+                        match = MatchingCategory.great;
+                    }
+                    break;
+                }
+            case StyleManager.Style.Formal:
+                {
+                    if ((clothingTags & ClothingTag.Formal) != 0)
+                    {
+                        match = MatchingCategory.great;
+                    }
+                    break;
+                }
+            default:
+                break;
+        }
+        return match; 
     }
 }
