@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class RadioScript : MonoBehaviour
 {
+    public GameObject particles;
     AudioSource audioSource;
-    // Start is called before the first frame update
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -13,15 +14,17 @@ public class RadioScript : MonoBehaviour
 
     public void ClickRadio ()
     {
-        if (audioSource != null)
+        if (audioSource != null && particles != null)
         {
             if (audioSource.isPlaying)
             {
                 audioSource.Stop();
+                particles.SetActive(false);
             }
             else
             {
                 audioSource.Play();
+                particles.SetActive(true);
             }
         }
     }
