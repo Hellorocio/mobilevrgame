@@ -33,7 +33,26 @@ public class ClothingObject : MonoBehaviour
         TopBottom = 5
     }
 
+    public enum ClothingColor
+    {
+        Red = 1,
+        Blue = 2,
+        Yellow = 3,
+        Green = 4,
+        Neutral = 5,
+        Black = 6
+    }
+
+    public enum MatchingCategory
+    {
+        bad = -5,
+        questionable = 0,
+        okay = 5,
+        great = 10
+    }
+
     public ClothingCategory category;
+    public ClothingColor color;
 
     [EnumFlag(2)]
     public ClothingTag clothingTags;
@@ -57,6 +76,11 @@ public class ClothingObject : MonoBehaviour
         defaultPosition = transform.position;
         defaultRotation = transform.rotation;
         defaultScale = transform.localScale;
+
+        if (equipped)
+        {
+            itemSlotParent = transform.parent;
+        }
         //print("Tag:" + type + " (" + (int)type + ")");
     }
 
@@ -65,7 +89,7 @@ public class ClothingObject : MonoBehaviour
     {
         if (debugText != null)
         {
-            debugText.text = "shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent;
+            //debugText.text = "shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent;
             //print("shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent);
         }
 
@@ -104,8 +128,43 @@ public class ClothingObject : MonoBehaviour
         
     }
 
-    public void GetClothingValue ()
+    /// <summary>
+    /// Used by Highlight Object to figure out if this object is highlightable (either removable or not equipped)
+    /// </summary>
+    /// <returns></returns>
+    public bool AllowHighlight ()
     {
+        if (!equipped || removable)
+        {
+            return true;
+        }
+        return false;
+    }
 
+    public MatchingCategory GetClothingMatch (StyleManager.Style compareStyle)
+    {
+        MatchingCategory match = MatchingCategory.bad;
+        switch (compareStyle)
+        {
+            case StyleManager.Style.Casual:
+                {
+                    if ((clothingTags & ClothingTag.Casual) != 0)
+                    {
+                        match = MatchingCategory.great;
+                    }
+                    break;
+                }
+            case StyleManager.Style.Formal:
+                {
+                    if ((clothingTags & ClothingTag.Formal) != 0)
+                    {
+                        match = MatchingCategory.great;
+                    }
+                    break;
+                }
+            default:
+                break;
+        }
+        return match; 
     }
 }

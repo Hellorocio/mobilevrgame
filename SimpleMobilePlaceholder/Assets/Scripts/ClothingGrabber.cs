@@ -11,6 +11,7 @@ public class ClothingGrabber : MonoBehaviour
     GameObject[] defaultSlots;
 
     GameObject currentClothing;
+    public GameObject debug;
     
 
     // Start is called before the first frame update
@@ -19,16 +20,11 @@ public class ClothingGrabber : MonoBehaviour
         defaultSlots = new GameObject[clothingSlots.Length];
         for (int i = 0; i < clothingSlots.Length; i++)
         {
-            if (clothingSlots != null)
+            if (clothingSlots[i] != null)
             {
                 defaultSlots[i] = clothingSlots[i];
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     /// <summary>
@@ -94,7 +90,17 @@ public class ClothingGrabber : MonoBehaviour
 
             clothingScript.TransformEquippedClothing(oldClothing.transform.parent);
 
-            oldClothing.SetActive(false);
+            //deactivate clothing if default, reset it otherwise
+            if (oldClothing == defaultSlots[(int)clothingScript.category])
+            {
+                oldClothing.SetActive(false);
+            }
+            else
+            {
+                ClothingObject oldClothingScript = oldClothing.GetComponent<ClothingObject>();
+                oldClothingScript.ResetTransform();
+            }
+            
             currentClothing = null;
         }
     }
@@ -137,4 +143,68 @@ public class ClothingGrabber : MonoBehaviour
             clothingSlots[clothingSlot].SetActive(true);
         }
     }
+
+    /// <summary>
+    /// Calculates maximum number of matching colors to get the bonus
+    /// </summary>
+    /// <returns></returns>
+    public int GetMaxMatchingColors ()
+    {
+        int maxColor = 1;
+        int[] colorTotals = new int[System.Enum.GetValues(typeof(ClothingObject.ClothingColor)).Length + 1];
+        for (int i = 0; i < clothingSlots.Length; i++)
+        {
+            if (clothingSlots[i] != null)
+            {
+                ClothingObject clothingScript = clothingSlots[i].GetComponent<ClothingObject>();
+                colorTotals[(int)clothingScript.color]++;
+            }
+        }
+        
+        for (int i = 0; i < colorTotals.Length; i++)
+        {
+            if ((ClothingObject.ClothingColor)i != ClothingObject.ClothingColor.Neutral && colorTotals[i] > maxColor)
+            {
+                maxColor = colorTotals[i];
+            }
+        }
+        return maxColor;
+    }
+
+    /// <summary>
+    /// Determines if a clothing item matches the style
+    /// </summary>
+    /// <returns></returns>
+    public string[] GetMatchingStyleScore(StyleManager.Style currentStyle)
+    {
+        string[] tally = new string[2]; //0 = score, 1 = tally
+        int score = 0;
+
+        for (int i = 0; i < clothingSlots.Length; i++)
+        {
+            if (clothingSlots[i] != null && clothingSlots[i].name != "NoHat")
+            {
+                ClothingObject clothingScript = clothingSlots[i].GetComponent<ClothingObject>();
+                ClothingObject.MatchingCategory clothingMatch = clothingScript.GetClothingMatch(currentStyle);
+                tally[1] += GetMatchingBonus((int)clothingMatch) + " " + clothingMatch.ToString() + " " + clothingScript.category.ToString().ToLower() + "\n";
+
+
+                score += (int)clothingMatch;
+            }
+        }
+
+        tally[0] = score.ToString();
+        return tally;
+    }
+
+    private string GetMatchingBonus (int match)
+    {
+        string result = match.ToString();
+        if (match > 0)
+        {
+            result = "+" + result;
+        }        
+        return result;
+    }
+
 }
