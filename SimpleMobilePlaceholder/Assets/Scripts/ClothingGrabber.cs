@@ -10,7 +10,8 @@ public class ClothingGrabber : MonoBehaviour
 
     GameObject[] defaultSlots;
 
-    GameObject currentClothing;
+    GameObject currentClothing; //clothing hovering over bear
+    HighlightObject highlightedClothing;  //clothing on bear we are about to replace
     public GameObject debug;
     
 
@@ -45,9 +46,8 @@ public class ClothingGrabber : MonoBehaviour
         if (collidedObj.tag == "Clothing" && clothingScript != null && !clothingScript.equipped && collidedObj != currentClothing)
         {
             currentClothing = collidedObj;
-            //collidedObj.tag = "Untagged";
-            
-            //EquipClothing(collidedObj.transform);
+
+            HighlightSelectedClothing(clothingScript);
         }
     }
 
@@ -56,6 +56,34 @@ public class ClothingGrabber : MonoBehaviour
         if (other.gameObject == currentClothing)
         {
             currentClothing = null;
+            UnHighlightSelectedClothing();
+        }
+    }
+
+    /// <summary>
+    /// Also sets selectedClothing to the highlightObject so we can easily unhighlight it
+    /// </summary>
+    private void HighlightSelectedClothing(ClothingObject newClothingScript)
+    {
+        GameObject selectedClothing = clothingSlots[(int)newClothingScript.category];
+        if (selectedClothing != null)
+        {
+            HighlightObject highlightScript = selectedClothing.GetComponentInChildren<HighlightObject>();
+            if (highlightScript != null)
+            {
+                
+                highlightScript.SetHighlightMaterial(true);
+
+                highlightedClothing = highlightScript;
+            }
+        }
+    }
+
+    private void UnHighlightSelectedClothing ()
+    {
+        if (highlightedClothing != null)
+        {
+            highlightedClothing.SetHighlightMaterial(false);
         }
     }
 
@@ -65,6 +93,9 @@ public class ClothingGrabber : MonoBehaviour
     /// <param name="clothing"></param>
     public void CheckEquipClothing (Transform clothing)
     {
+        //first set dragging because this is called on pointer up
+        clothing.GetComponent<ClothingObject>().SetDragging(false);
+
         if (currentClothing != null && clothing == currentClothing.transform)
         {
             EquipClothing(clothing);
@@ -82,6 +113,7 @@ public class ClothingGrabber : MonoBehaviour
         if (clothingScript != null && draggableScript != null)
         {
             draggableScript.Release();
+            UnHighlightSelectedClothing();
 
 
             GameObject oldClothing = clothingSlots[(int)clothingScript.category];
@@ -115,6 +147,9 @@ public class ClothingGrabber : MonoBehaviour
         {
             ResetClothingItem(clothingScript.category, false);
         }
+
+        //set dragging because this is called on pointer down
+        clothingScript.SetDragging(true);
     }
 
     /// <summary>

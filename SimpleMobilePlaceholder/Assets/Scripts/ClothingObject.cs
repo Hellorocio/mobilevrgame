@@ -40,7 +40,8 @@ public class ClothingObject : MonoBehaviour
         Yellow = 3,
         Green = 4,
         Neutral = 5,
-        Black = 6
+        Black = 6,
+        White = 7
     }
 
     public enum MatchingCategory
@@ -60,6 +61,7 @@ public class ClothingObject : MonoBehaviour
     public bool removable; //used for hats to allow you to click to take them off
     public bool test;
     public bool equipped;
+    public bool dragging;
     private Transform itemSlotParent;
 
     public Text debugText;
@@ -134,7 +136,7 @@ public class ClothingObject : MonoBehaviour
     /// <returns></returns>
     public bool AllowHighlight ()
     {
-        if (!equipped || removable)
+        if ((!equipped || removable) && !dragging)
         {
             return true;
         }
@@ -166,5 +168,10 @@ public class ClothingObject : MonoBehaviour
                 break;
         }
         return match; 
+    }
+
+    public void SetDragging (bool set)
+    {
+        dragging = set;
     }
 }

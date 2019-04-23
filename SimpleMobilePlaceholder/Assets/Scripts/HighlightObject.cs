@@ -34,14 +34,20 @@ public class HighlightObject : MonoBehaviour
             return;
         }
 
+        SetHighlightMaterial(gazedAt);
+    }
+
+    public void SetHighlightMaterial (bool highlight)
+    {
         Material[] tempMaterials = myRenderer.materials;
         if (gazedAtMaterial != null)
         {
             for (int i = 0; i < defaultMaterials.Length; i++)
             {
-                tempMaterials[i] = gazedAt ? gazedAtMaterial : defaultMaterials[i];
+                tempMaterials[i] = highlight ? gazedAtMaterial : defaultMaterials[i];
             }
         }
         myRenderer.materials = tempMaterials;
     }
+    
 }
