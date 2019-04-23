@@ -12,6 +12,7 @@ public class ClothingGrabber : MonoBehaviour
 
     GameObject currentClothing; //clothing hovering over bear
     HighlightObject highlightedClothing;  //clothing on bear we are about to replace
+    
     public GameObject debug;
     
 
