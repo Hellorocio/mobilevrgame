@@ -68,8 +68,7 @@ public class ClothingObject : MonoBehaviour
 
     Quaternion defaultRotation;
     Vector3 defaultPosition;
-    Vector3 defaultScale;
-    
+    Vector3 defaultScale;    
  
 
     // Start is called before the first frame update
@@ -150,15 +149,17 @@ public class ClothingObject : MonoBehaviour
         {
             case StyleManager.Style.Casual:
                 {
-                    if ((clothingTags & ClothingTag.Casual) != 0)
+                   
+                    if ((clothingTags & TagManager.greatTags[(int) compareStyle - 1]) != 0)
                     {
                         match = MatchingCategory.great;
                     }
+
                     break;
                 }
             case StyleManager.Style.Formal:
                 {
-                    if ((clothingTags & ClothingTag.Formal) != 0)
+                    if ((clothingTags & TagManager.greatTags[(int)compareStyle - 1]) != 0)
                     {
                         match = MatchingCategory.great;
                     }
