@@ -142,31 +142,33 @@ public class ClothingObject : MonoBehaviour
         return false;
     }
 
+
+    /// <summary>
+    /// Returns how well this clothing item matches the given style
+    /// </summary>
+    /// <param name="compareStyle"></param>
+    /// <returns></returns>
     public MatchingCategory GetClothingMatch (StyleManager.Style compareStyle)
     {
         MatchingCategory match = MatchingCategory.bad;
-        switch (compareStyle)
+        if ((clothingTags & TagManager.greatTags[(int)compareStyle - 1]) != 0)
         {
-            case StyleManager.Style.Casual:
-                {
-                   
-                    if ((clothingTags & TagManager.greatTags[(int) compareStyle - 1]) != 0)
-                    {
-                        match = MatchingCategory.great;
-                    }
-
-                    break;
-                }
-            case StyleManager.Style.Formal:
-                {
-                    if ((clothingTags & TagManager.greatTags[(int)compareStyle - 1]) != 0)
-                    {
-                        match = MatchingCategory.great;
-                    }
-                    break;
-                }
-            default:
-                break;
+            match = MatchingCategory.great;
+        }
+        else
+        if ((clothingTags & TagManager.okayTags[(int)compareStyle - 1]) != 0)
+        {
+            match = MatchingCategory.okay;
+        }
+        else
+        if ((clothingTags & TagManager.questionableTags[(int)compareStyle - 1]) != 0)
+        {
+            match = MatchingCategory.questionable;
+        }
+        else
+        if ((clothingTags & TagManager.badTags[(int)compareStyle - 1]) != 0)
+        {
+            match = MatchingCategory.bad;
         }
         return match; 
     }
