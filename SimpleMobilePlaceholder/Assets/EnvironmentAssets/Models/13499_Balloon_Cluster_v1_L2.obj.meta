@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 29a6a315d00344eb8996d04895e723a3
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Balloon_pink01
+    100004: Balloon_pink02
+    100006: Balloon_pink03
+    100008: Balloon_rope01
+    100010: Balloon_rope02
+    100012: Balloon_rope03
+    100014: Balloon_rope04
+    100016: Balloon_rope05
+    100018: Balloon_rope07
+    100020: Balloon_yellow01
+    100022: Balloon_yellow02
+    100024: Balloon_yellow03
+    100026: Balloon_yellow04
+    100028: Object06
+    400000: //RootNode
+    400002: Balloon_pink01
+    400004: Balloon_pink02
+    400006: Balloon_pink03
+    400008: Balloon_rope01
+    400010: Balloon_rope02
+    400012: Balloon_rope03
+    400014: Balloon_rope04
+    400016: Balloon_rope05
+    400018: Balloon_rope07
+    400020: Balloon_yellow01
+    400022: Balloon_yellow02
+    400024: Balloon_yellow03
+    400026: Balloon_yellow04
+    400028: Object06
+    2100000: Balloon_pink01Mat
+    2100002: Balloon_pink02Mat
+    2100004: Balloon_pink03Mat
+    2100006: Balloon_rope01Mat
+    2100008: Balloon_rope02Mat
+    2100010: Balloon_rope03Mat
+    2100012: Balloon_rope04Mat
+    2100014: Balloon_rope05Mat
+    2100016: Balloon_rope07Mat
+    2100018: Balloon_yellow01Mat
+    2100020: Balloon_yellow02Mat
+    2100022: Balloon_yellow03Mat
+    2100024: Balloon_yellow04Mat
+    2100026: Object06Mat
+    2300000: Balloon_pink01
+    2300002: Balloon_pink02
+    2300004: Balloon_pink03
+    2300006: Balloon_rope01
+    2300008: Balloon_rope02
+    2300010: Balloon_rope03
+    2300012: Balloon_rope04
+    2300014: Balloon_rope05
+    2300016: Balloon_rope07
+    2300018: Balloon_yellow01
+    2300020: Balloon_yellow02
+    2300022: Balloon_yellow03
+    2300024: Balloon_yellow04
+    2300026: Object06
+    3300000: Balloon_pink01
+    3300002: Balloon_pink02
+    3300004: Balloon_pink03
+    3300006: Balloon_rope01
+    3300008: Balloon_rope02
+    3300010: Balloon_rope03
+    3300012: Balloon_rope04
+    3300014: Balloon_rope05
+    3300016: Balloon_rope07
+    3300018: Balloon_yellow01
+    3300020: Balloon_yellow02
+    3300022: Balloon_yellow03
+    3300024: Balloon_yellow04
+    3300026: Object06
+    4300000: Balloon_pink01
+    4300002: Balloon_pink02
+    4300004: Balloon_pink03
+    4300006: Balloon_rope01
+    4300008: Balloon_rope02
+    4300010: Balloon_rope03
+    4300012: Balloon_rope04
+    4300014: Balloon_rope05
+    4300016: Balloon_rope07
+    4300018: Balloon_yellow01
+    4300020: Balloon_yellow02
+    4300022: Balloon_yellow03
+    4300024: Balloon_yellow04
+    4300026: Object06
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
