@@ -8,6 +8,8 @@ public class ClothingGrabber : MonoBehaviour
     public GameObject[] clothingSlots; //correspond with category
                                        //leave 0 empty, 1 = top, 2 = bottom, 3 = hat, 4 = shoes, 5 = topbottom
 
+    public AudioSource clothingSound;
+
     GameObject[] defaultSlots;
 
     GameObject currentClothing; //clothing hovering over bear
@@ -100,6 +102,7 @@ public class ClothingGrabber : MonoBehaviour
         if (currentClothing != null && clothing == currentClothing.transform)
         {
             EquipClothing(clothing);
+            PlayClothingSound();
         }
     }
 
@@ -147,6 +150,7 @@ public class ClothingGrabber : MonoBehaviour
         if (clothingScript.removable && clothingScript.equipped)
         {
             ResetClothingItem(clothingScript.category, false);
+            PlayClothingSound();
         }
 
         //set dragging because this is called on pointer down
@@ -241,6 +245,14 @@ public class ClothingGrabber : MonoBehaviour
             result = "+" + result;
         }        
         return result;
+    }
+
+    private void PlayClothingSound ()
+    {
+        if (clothingSound != null && !clothingSound.isPlaying)
+        {
+            clothingSound.Play();
+        }
     }
 
 }

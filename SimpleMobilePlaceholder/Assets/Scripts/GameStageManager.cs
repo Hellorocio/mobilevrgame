@@ -7,6 +7,8 @@ public class GameStageManager : MonoBehaviour
     public GameObject[] UIDisplayStages; // 0 = start, 1 = game, 2 = score
     public GameObject UIClickBlocker; //boxes that prevent clicking in scene when UI is active
 
+    public TimerManager timerManager;
+
     public StyleManager styleManager;
 
     private GameObject currrentUIDisplay;
@@ -24,6 +26,12 @@ public class GameStageManager : MonoBehaviour
         SetCurrentUIDisplay(stage);
         SetUIClickBlocker((GameStage)stage);
         UpdateStyleManager((GameStage)stage);
+    }
+
+    public void StartGame (bool timedModeOn)
+    {
+        timerManager.SetTimer(timedModeOn);
+        SetGameStage(1);
     }
 
     public void UpdateStyleManager (GameStage stage)
