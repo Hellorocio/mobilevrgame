@@ -49,5 +49,22 @@ public class HighlightObject : MonoBehaviour
         }
         myRenderer.materials = tempMaterials;
     }
+
+    public void SetMaterial (Material newMat)
+    {
+        Material[] tempMaterials = myRenderer.materials;
+        if (gazedAtMaterial != null)
+        {
+            for (int i = 0; i < defaultMaterials.Length; i++)
+            {
+                if (!tempMaterials[i].name.Contains("bear") && !tempMaterials[i].name.Contains("secondary"))
+                {
+                    tempMaterials[i] = newMat;
+                }
+                
+            }
+        }
+        myRenderer.materials = tempMaterials;
+    }
     
 }

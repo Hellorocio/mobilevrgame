@@ -8,12 +8,18 @@ public class ClothingGrabber : MonoBehaviour
     public GameObject[] clothingSlots; //correspond with category
                                        //leave 0 empty, 1 = top, 2 = bottom, 3 = hat, 4 = shoes, 5 = topbottom
 
+    public Material[] clothingColors;
+    
+
     public AudioSource clothingSound;
 
     GameObject[] defaultSlots;
 
     GameObject currentClothing; //clothing hovering over bear
+    int selectedClothing = -1; //slot clothing that will change color
     HighlightObject highlightedClothing;  //clothing on bear we are about to replace
+
+    
     
     public GameObject debug;
     
@@ -136,7 +142,8 @@ public class ClothingGrabber : MonoBehaviour
                 ClothingObject oldClothingScript = oldClothing.GetComponent<ClothingObject>();
                 oldClothingScript.ResetTransform();
             }
-            
+
+            selectedClothing = (int)clothingScript.category;
             currentClothing = null;
         }
     }
@@ -203,7 +210,7 @@ public class ClothingGrabber : MonoBehaviour
         
         for (int i = 0; i < colorTotals.Length; i++)
         {
-            if ((ClothingObject.ClothingColor)i != ClothingObject.ClothingColor.Neutral && colorTotals[i] > maxColor)
+            if ((ClothingObject.ClothingColor)i != ClothingObject.ClothingColor.None && colorTotals[i] > maxColor)
             {
                 maxColor = colorTotals[i];
             }
@@ -252,6 +259,16 @@ public class ClothingGrabber : MonoBehaviour
         if (clothingSound != null && !clothingSound.isPlaying)
         {
             clothingSound.Play();
+        }
+    }
+
+
+    public void ClothingColorChange (ColorButton colorButton)
+    {
+        if (selectedClothing != -1 && clothingColors[(int)colorButton.color] != null)
+        {
+            clothingSlots[selectedClothing].GetComponentInChildren<HighlightObject>().SetMaterial(clothingColors[(int)colorButton.color]);
+            clothingSlots[selectedClothing].GetComponent<ClothingObject>().color = colorButton.color;
         }
     }
 

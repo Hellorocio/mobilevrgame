@@ -35,13 +35,25 @@ public class ClothingObject : MonoBehaviour
 
     public enum ClothingColor
     {
+        None = 0,
         Red = 1,
-        Blue = 2,
+        Orange = 2,
         Yellow = 3,
         Green = 4,
-        Neutral = 5,
-        Black = 6,
-        White = 7
+        Blue = 5,
+        Purple = 6,
+        Pink = 7,
+        LightOrange = 8,
+        LightYellow = 9,
+        LightGreen = 10,
+        LightBlue = 11,
+        LightPurple = 12,
+        Brown = 13,
+        LightBrown = 14,
+        Black = 15,
+        Gray = 16,
+        White = 17,
+        Neutral = 18,
     }
 
     public enum MatchingCategory
