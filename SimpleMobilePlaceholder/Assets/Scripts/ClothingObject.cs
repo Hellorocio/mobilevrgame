@@ -80,7 +80,8 @@ public class ClothingObject : MonoBehaviour
 
     Quaternion defaultRotation;
     Vector3 defaultPosition;
-    Vector3 defaultScale;    
+    Vector3 defaultScale;
+    Transform defaultParent;
  
 
     // Start is called before the first frame update
@@ -89,6 +90,7 @@ public class ClothingObject : MonoBehaviour
         defaultPosition = transform.position;
         defaultRotation = transform.rotation;
         defaultScale = transform.localScale;
+        defaultParent = transform.parent;
 
         if (equipped)
         {
@@ -129,7 +131,7 @@ public class ClothingObject : MonoBehaviour
     public void ResetTransform ()
     {
         equipped = false;
-        transform.parent = null;
+        transform.parent = defaultParent;
         transform.position = defaultPosition;
         transform.rotation = defaultRotation;
         transform.localScale = defaultScale;
