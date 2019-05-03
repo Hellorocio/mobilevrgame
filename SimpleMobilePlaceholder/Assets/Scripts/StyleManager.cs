@@ -11,6 +11,7 @@ public class StyleManager : MonoBehaviour
     public Text finalScoreText;
     public Text scoreTitleText;
     public ClothingGrabber clothingGrabber;
+    public GameStageManager gameStageManager;
 
     public enum Style
     {
@@ -103,10 +104,13 @@ public class StyleManager : MonoBehaviour
         if (score > CalculateMinScore())
         {
             result = "Nice style!";
+            gameStageManager.PlayFanfare(true);
         }
         else
         {
             result = "Needs work";
+            gameStageManager.PlayFanfare(false);
+
         }
         return result;
     }

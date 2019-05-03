@@ -19,7 +19,6 @@ public class ClothingRackObject : MonoBehaviour
     {
         foreach (ClothingObject c in clothingOnRack)
         {
-            print(c.name + " reset");
             c.ResetTransform();
         }
     }

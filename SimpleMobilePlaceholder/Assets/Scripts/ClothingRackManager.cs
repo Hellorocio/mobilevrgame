@@ -21,7 +21,6 @@ public class ClothingRackManager : MonoBehaviour
     {
         foreach (ClothingRackObject c in allClothingRacks)
         {
-            print(c.name + " reset");
             c.ResetRack();
         }
     }

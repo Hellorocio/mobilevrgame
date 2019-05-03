@@ -57,9 +57,10 @@ public class HighlightObject : MonoBehaviour
         {
             for (int i = 0; i < defaultMaterials.Length; i++)
             {
-                if (!tempMaterials[i].name.Contains("bear") && !tempMaterials[i].name.Contains("secondary"))
+                if (tempMaterials[i].name.Contains("primary"))
                 {
                     tempMaterials[i] = newMat;
+                    defaultMaterials[i] = newMat;
                 }
                 
             }

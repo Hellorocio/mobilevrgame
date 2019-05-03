@@ -14,6 +14,9 @@ public class GameStageManager : MonoBehaviour
     private GameObject currrentUIDisplay;
 
     public enum GameStage { start, game, score };
+
+    public AudioClip[] fanfareSounds; // 0 = win, 1 = lose
+    public AudioSource fanfareSource; 
    
 
     private void Start()
@@ -73,6 +76,20 @@ public class GameStageManager : MonoBehaviour
         {
             UIClickBlocker.SetActive(true);
         }
+    }
+
+
+    public void PlayFanfare (bool win)
+    {
+        if (win)
+        {
+            fanfareSource.clip = fanfareSounds[0];
+        }
+        else
+        {
+            fanfareSource.clip = fanfareSounds[1];
+        }
+        fanfareSource.Play();
     }
 
 
