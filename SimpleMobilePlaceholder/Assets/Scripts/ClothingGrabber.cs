@@ -9,7 +9,7 @@ public class ClothingGrabber : MonoBehaviour
                                        //leave 0 empty, 1 = top, 2 = bottom, 3 = hat, 4 = shoes, 5 = topbottom
 
     public Material[] clothingColors;
-    
+    public GameObject colorPicker;    
 
     public AudioSource clothingSound;
 
@@ -141,6 +141,11 @@ public class ClothingGrabber : MonoBehaviour
             {
                 ClothingObject oldClothingScript = oldClothing.GetComponent<ClothingObject>();
                 oldClothingScript.ResetTransform();
+            }
+
+            if (colorPicker != null && !colorPicker.activeSelf)
+            {
+                colorPicker.SetActive(true);
             }
 
             selectedClothing = (int)clothingScript.category;

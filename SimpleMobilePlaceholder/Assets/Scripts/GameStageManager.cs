@@ -11,6 +11,7 @@ public class GameStageManager : MonoBehaviour
 
     public StyleManager styleManager;
 
+    public GameObject colorPicker;
     private GameObject currrentUIDisplay;
 
     public enum GameStage { start, game, score };
@@ -62,6 +63,12 @@ public class GameStageManager : MonoBehaviour
         {
             currrentUIDisplay.SetActive(false);
         }
+
+        if (colorPicker != null)
+        {
+            colorPicker.SetActive(false);
+        }
+
         currrentUIDisplay = UIDisplayStages[(int)stage];
         currrentUIDisplay.SetActive(true);
     }

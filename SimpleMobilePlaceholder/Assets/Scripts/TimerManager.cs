@@ -24,6 +24,11 @@ public class TimerManager : MonoBehaviour
         }
     }
 
+    public void StopTimer ()
+    {
+        StopAllCoroutines();
+    }
+
 
     IEnumerator CountdownTimer()
     {
