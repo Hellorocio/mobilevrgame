@@ -68,7 +68,7 @@ public class ClothingRackManager : MonoBehaviour
             {
                 newRackPage = pagableRacks.Length - 1;
             }
-            print("current = " + currentRackPage + " previous page = " + newRackPage);
+            //print("current = " + currentRackPage + " previous page = " + newRackPage);
         }
         return newRackPage;
     }
