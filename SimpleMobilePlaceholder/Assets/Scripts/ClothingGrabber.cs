@@ -110,6 +110,10 @@ public class ClothingGrabber : MonoBehaviour
             EquipClothing(clothing);
             PlayClothingSound();
         }
+        else
+        {
+            clothing.GetComponent<ClothingObject>().ResetTransform();
+        }
     }
 
     /// <summary>
