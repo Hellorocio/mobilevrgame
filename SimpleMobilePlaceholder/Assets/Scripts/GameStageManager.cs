@@ -11,6 +11,8 @@ public class GameStageManager : MonoBehaviour
 
     public StyleManager styleManager;
 
+    public RadioScript radioScript;
+
     public GameObject colorPicker;
     private GameObject currrentUIDisplay;
 
@@ -35,6 +37,15 @@ public class GameStageManager : MonoBehaviour
     public void StartGame (bool timedModeOn)
     {
         timerManager.SetTimer(timedModeOn);
+
+        if (timedModeOn)
+        {
+            radioScript.SetMusic(RadioScript.MusicType.Timed);
+        }
+        else
+        {
+            radioScript.SetMusic(RadioScript.MusicType.Untimed);
+        }
         SetGameStage(1);
     }
 
@@ -50,6 +61,7 @@ public class GameStageManager : MonoBehaviour
             case GameStage.score:
                 {
                     styleManager.GenerateScore();
+                    radioScript.SetMusic(RadioScript.MusicType.Untimed);
                     break;
                 }
             default:
