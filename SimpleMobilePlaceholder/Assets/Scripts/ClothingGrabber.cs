@@ -12,6 +12,7 @@ public class ClothingGrabber : MonoBehaviour
     public GameObject colorPicker;    
 
     public AudioSource clothingSound;
+    public Material bearSkinMat;
 
     GameObject[] defaultSlots;
 
@@ -103,7 +104,8 @@ public class ClothingGrabber : MonoBehaviour
     public void CheckEquipClothing (Transform clothing)
     {
         //first set dragging because this is called on pointer up
-        clothing.GetComponent<ClothingObject>().SetDragging(false);
+        ClothingObject clothingScript = clothing.GetComponent<ClothingObject>();
+        clothingScript.SetDragging(false);
 
         if (currentClothing != null && clothing == currentClothing.transform)
         {
@@ -111,8 +113,9 @@ public class ClothingGrabber : MonoBehaviour
             PlayClothingSound();
         }
         else
+        if (currentClothing == null && clothingSlots[(int)clothingScript.category] != clothing.gameObject)
         {
-            clothing.GetComponent<ClothingObject>().ResetTransform();
+            clothingScript.ResetTransform();
         }
     }
 
@@ -145,8 +148,23 @@ public class ClothingGrabber : MonoBehaviour
             {
                 ClothingObject oldClothingScript = oldClothing.GetComponent<ClothingObject>();
                 oldClothingScript.ResetTransform();
+
+                //set transparent skin
+                HighlightObject oldhighlightScript = oldClothing.GetComponentInChildren<HighlightObject>();
+                if (oldhighlightScript != null)
+                {
+                    oldhighlightScript.ResetTransparentMat();
+                }
             }
 
+            //set bear skin
+            HighlightObject highlightScript = clothing.GetComponentInChildren<HighlightObject>();
+            if (highlightScript != null)
+            {
+                highlightScript.SetBearSkin(bearSkinMat);
+            }
+
+            //activate color picker
             if (colorPicker != null && !colorPicker.activeSelf)
             {
                 colorPicker.SetActive(true);
@@ -193,7 +211,14 @@ public class ClothingGrabber : MonoBehaviour
             {
                 clothingScript.UnequipThis();
             }
-            
+
+
+            //set transparent skin
+            HighlightObject highlightScript = clothingSlots[clothingSlot].GetComponentInChildren<HighlightObject>();
+            if (highlightScript != null)
+            {
+                highlightScript.ResetTransparentMat();
+            }
 
             clothingSlots[clothingSlot] = defaultSlots[clothingSlot];
             clothingSlots[clothingSlot].SetActive(true);

@@ -91,6 +91,7 @@ public class ClothingObject : MonoBehaviour
         defaultRotation = transform.rotation;
         defaultScale = transform.localScale;
         defaultParent = transform.parent;
+        //print("clothing: " + gameObject.name + "parent = " + defaultParent);
 
         if (equipped)
         {
@@ -108,7 +109,7 @@ public class ClothingObject : MonoBehaviour
             //print("shirt: pos = " + transform.position + " local = " + transform.localPosition + " parent = " + transform.parent);
         }
 
-        if (equipped && (transform.localPosition != Vector3.zero || transform.parent != itemSlotParent))
+        if (equipped && itemSlotParent != null && (transform.localPosition != Vector3.zero || transform.parent != itemSlotParent))
         {
             transform.parent = itemSlotParent;
             transform.localPosition = Vector3.zero;
@@ -135,6 +136,7 @@ public class ClothingObject : MonoBehaviour
         transform.position = defaultPosition;
         transform.rotation = defaultRotation;
         transform.localScale = defaultScale;
+        //print("transform reset for " + gameObject + " parent = " + transform.parent);
     }
 
     public void UnequipThis()

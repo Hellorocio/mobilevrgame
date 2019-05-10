@@ -9,6 +9,7 @@ public class HighlightObject : MonoBehaviour
     private Material[] defaultMaterials;
     public bool highlight;
     public ClothingObject clothingScript;
+    private Material transparentMat;
 
     private void Start()
     {
@@ -44,7 +45,10 @@ public class HighlightObject : MonoBehaviour
         {
             for (int i = 0; i < defaultMaterials.Length; i++)
             {
-                tempMaterials[i] = highlight ? gazedAtMaterial : defaultMaterials[i];
+                if (!tempMaterials[i].name.Contains("Transparent"))
+                {
+                    tempMaterials[i] = highlight ? gazedAtMaterial : defaultMaterials[i];
+                }
             }
         }
         myRenderer.materials = tempMaterials;
@@ -66,6 +70,47 @@ public class HighlightObject : MonoBehaviour
             }
         }
         myRenderer.materials = tempMaterials;
+    }
+
+    public void SetBearSkin (Material bearSkinMat)
+    {
+        Material[] tempMaterials = myRenderer.materials;
+        if (gazedAtMaterial != null)
+        {
+            for (int i = 0; i < defaultMaterials.Length; i++)
+            {
+                if (tempMaterials[i].name.Contains("Transparent"))
+                {
+                    transparentMat = tempMaterials[i];
+                    tempMaterials[i] = bearSkinMat;
+                    defaultMaterials[i] = bearSkinMat;
+                }
+
+            }
+        }
+        myRenderer.materials = tempMaterials;
+    }
+
+    public void ResetTransparentMat ()
+    {
+        if (transparentMat != null)
+        {
+            Material[] tempMaterials = myRenderer.materials;
+            if (gazedAtMaterial != null)
+            {
+                for (int i = 0; i < defaultMaterials.Length; i++)
+                {
+                    if (tempMaterials[i].name.Contains("bear"))
+                    {
+                        tempMaterials[i] = transparentMat;
+                        defaultMaterials[i] = transparentMat;
+                    }
+
+                }
+            }
+            myRenderer.materials = tempMaterials;
+        }
+       
     }
     
 }

@@ -30,7 +30,7 @@ public class DraggableScript : MonoBehaviour
 
     public void Release()
     {
-        transform.SetParent(null, true);
+        //transform.SetParent(null, true);
     }
 }
 

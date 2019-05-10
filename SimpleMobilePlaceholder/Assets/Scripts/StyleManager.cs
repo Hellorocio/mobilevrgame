@@ -17,6 +17,7 @@ public class StyleManager : MonoBehaviour
     {
         Casual = 1,
         Formal = 2,
+        BusCas = 3
     }
 
     private int numStyles;
@@ -45,7 +46,16 @@ public class StyleManager : MonoBehaviour
 
     private void SetCurrentStyleText()
     {
-        currentStyleText.text = currentStyle.ToString();
+        string styleText = currentStyle.ToString();
+        if (styleText.Contains("BusCas"))
+        {
+            styleText = "Business Casual";
+        }
+        if (styleText.Contains("BusProf"))
+        {
+            styleText = "Business Professional";
+        }
+        currentStyleText.text = styleText;
     }
 
     /// <summary>
