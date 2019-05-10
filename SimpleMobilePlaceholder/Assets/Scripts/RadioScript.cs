@@ -37,9 +37,10 @@ public class RadioScript : MonoBehaviour
     /// Called by buttons [0] = set to untimed, [1] = set to timed
     /// </summary>
     /// <param name="musicNum"></param>
-    public void SetMusic (MusicType musicType)
+    public void SetMusic (int musicType)
     {
-        audioSource.clip = bgMusic[(int)musicType];
+        audioSource.clip = bgMusic[musicType];
+        audioSource.Play();
     }
     
 }

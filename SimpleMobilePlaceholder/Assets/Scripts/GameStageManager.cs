@@ -40,11 +40,11 @@ public class GameStageManager : MonoBehaviour
 
         if (timedModeOn)
         {
-            radioScript.SetMusic(RadioScript.MusicType.Timed);
+            radioScript.SetMusic(1);
         }
         else
         {
-            radioScript.SetMusic(RadioScript.MusicType.Untimed);
+            radioScript.SetMusic(0);
         }
         SetGameStage(1);
     }
@@ -61,7 +61,7 @@ public class GameStageManager : MonoBehaviour
             case GameStage.score:
                 {
                     styleManager.GenerateScore();
-                    radioScript.SetMusic(RadioScript.MusicType.Untimed);
+                    radioScript.SetMusic(0);
                     break;
                 }
             default:
